@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Zentuz.Control.PausedMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="700" Width="922" xmlns:my="clr-namespace:Beginning.Kinect.Framework.Controls" Background="#7B0000C7">
+    <Grid Height="700" Background="#2C44F0F5">
+        <Rectangle Height="380" HorizontalAlignment="Left" Margin="174,165,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="638" Fill="#FFE8C7C7" />
+        <Label Content="Time:" Height="84" HorizontalAlignment="Left" Margin="553,170,0,0" x:Name="lblTime" VerticalAlignment="Top" FontSize="48" Width="131" />
+        <TextBlock  Height="71" HorizontalAlignment="Left" Margin="690,170,0,0" x:Name="txtTime" Text="0:00" VerticalAlignment="Top" FontSize="48"/>
+       
+        <my:HoverButton x:Name="btnMainMenu" Canvas.Left="624" Canvas.Top="441" Content="Main Menu" FontSize="45" Margin="217,364,144,222" />
+        <Label Content="Score:" Height="68" Name="lblScore" FontSize="48" Width="149" Margin="217,165,556,467" />
+        <TextBlock Height="63" Name="txtScore" Text="0" FontSize="48" Width="41" Margin="372,170,509,467" />
+    </Grid>
+</UserControl>

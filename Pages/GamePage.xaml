@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Zentuz.Page.GamePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="922" xmlns:my="clr-namespace:Zentuz.Control" xmlns:my1="clr-namespace:Zentuz.Page">
+    <Grid Width="872" Height="700">
+        <my1:MathGamePage HorizontalAlignment="Left" Margin="-30,-25,0,0" x:Name="mathGamePage1" VerticalAlignment="Top" Height="700" Width="902" />
+        <my:PausedMenu Height="725" HorizontalAlignment="Left" Margin="0,-25,0,0" x:Name="pausedMenu1" VerticalAlignment="Top" Width="906" Visibility="Hidden" Opacity="1" OpacityMask="{x:Null}" Background="#94008AEB" />
+    </Grid>
+</UserControl>
