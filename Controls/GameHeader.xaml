@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Zentuz.Controls.GameHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="288" d:DesignWidth="910">
+    <Grid Height="236">
+        <Label FontSize="100" Content="Score:" Height="121" HorizontalAlignment="Left" x:Name="lblScore" VerticalAlignment="Top" Width="288" Margin="12,94,0,0" />
+        <Label Content="Lives:" FontSize="100" Height="132" HorizontalAlignment="Left" Margin="9,0,0,0" Name="lblLives" VerticalAlignment="Top" Width="279" />
+        <Label Content="Time:" FontSize="100" Height="121" HorizontalAlignment="Left" Margin="438,0,0,0" Name="lblTime" VerticalAlignment="Top" Width="268" />
+        <TextBox FontSize="100" Height="106" Margin="290,118,478,0" Name="txtScore" VerticalAlignment="Top" />
+        <TextBox FontSize="100" Height="106" HorizontalAlignment="Left" Margin="688,15,0,0" Name="txTime" VerticalAlignment="Top" Width="170" />
+        <TextBox FontSize="100" Height="109" HorizontalAlignment="Left" Margin="290,12,0,0" Name="txtLives" VerticalAlignment="Top" Width="142" />
+        <Canvas Height="88" HorizontalAlignment="Left" Margin="462,136,0,0" Name="cnvAnimation" VerticalAlignment="Top" Width="396" />
+    </Grid>
+</UserControl>
