@@ -60,7 +60,7 @@
       <DependentUpon>GameHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="GeneralConf.cs" />
-    <Compile Include="Images\WaveGesture.cs" />
+    <Compile Include="Gestures\WaveGesture.cs" />
     <Compile Include="Pages.cs" />
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
@@ -156,9 +156,7 @@
   <ItemGroup>
     <Resource Include="Images\hand.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Gestures\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
