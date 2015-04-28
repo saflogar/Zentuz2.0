@@ -38,7 +38,32 @@ namespace Zentuz
 
         private void KinectSensors_StatusChanged(Object sender, StatusChangedEventArgs e)
         {
-            switch (e.Status) { }
+            switch (e.Status)
+            {
+                case KinectStatus.Connected:
+                    break;
+                case KinectStatus.DeviceNotGenuine:
+                    break;
+                case KinectStatus.DeviceNotSupported:
+                    break;
+                case KinectStatus.Disconnected:
+                    break;
+                case KinectStatus.Error:
+                    break;
+                case KinectStatus.Initializing:
+                    break;
+                case KinectStatus.InsufficientBandwidth:
+                    break;
+                case KinectStatus.NotPowered:
+                    break;
+                case KinectStatus.NotReady:
+                    break;
+                case KinectStatus.Undefined:
+                    break;
+                default:
+                    break;
+            }
+           
 
         }
         public KinectSensor KinectDevice

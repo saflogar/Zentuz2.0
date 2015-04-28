@@ -24,7 +24,19 @@ namespace Zentuz.Page
         public GamePage()
         {
             InitializeComponent();
-            pausedMenu1.IsHitTestVisible = false;
+            ResetGame();
+            //GESTURE EVENTS
+            Beginning.Kinect.Framework.KinectCursorManager.Instance.WaveGestureDetected += new EventHandler(Instance_WaveGestureDetected);
+            //GAME HEADER EVENTS
+            this.gameHeader1.OnLevelsEnded += new EventHandler(gameHeader1_OnLevelsEnded);
+            this.gameHeader1.OnLivesEnded += new EventHandler(gameHeader1_OnLivesEnded);
+            this.gameHeader1.OnTimeFinished += new EventHandler(gameHeader1_OnTimeFinished);
+            //GAME EVENTS
+            this.mathGamePage1.LiveLosed += new EventHandler(mathGamePage1_LiveLosed);
+            this.mathGamePage1.OnAnsweredCorrect += new EventHandler(mathGamePage1_OnAnsweredCorrect);
+            //PAUSE MENU EVENTS
+            this.pausedMenu1.btnMainMenu.Click += new RoutedEventHandler(btnMainMenu_Click);
+      /*      pausedMenu1.IsHitTestVisible = false;
             pausedMenu1.btnMainMenu.IsHitTestVisible = false;
             this.pausedMenu1.lblMessage.IsHitTestVisible = false;
             //GESTURE EVENTS
@@ -42,7 +54,7 @@ namespace Zentuz.Page
             GeneralConf.TimeLeft = 120;
             GeneralConf.LiveNumb = 3;
             GeneralConf.NumbOfLevels = 5;
-            this.gameHeader1.RefreshComponents();
+            this.gameHeader1.RefreshComponents();*/
         }
 
         void btnMainMenu_Click(object sender, RoutedEventArgs e)
@@ -74,12 +86,14 @@ namespace Zentuz.Page
         {
             DisplayMenu("Game Over");
             Beginning.Kinect.Framework.KinectCursorManager.Instance.WaveGestureDetected -= Instance_WaveGestureDetected;
+            
         }
 
         void gameHeader1_OnLevelsEnded(object sender, EventArgs e)
         {
             DisplayMenu("Congratulations");
             Beginning.Kinect.Framework.KinectCursorManager.Instance.WaveGestureDetected -= Instance_WaveGestureDetected;
+
         }
 
         void Instance_WaveGestureDetected(object sender, EventArgs e)
@@ -105,6 +119,24 @@ namespace Zentuz.Page
                 pausedMenu1.btnMainMenu.IsHitTestVisible = true;
                 this.pausedMenu1.lblMessage.IsHitTestVisible = true;
             }
+        }
+
+        public void ResetGame() 
+        {
+            //PAUSE MENU EVENTS
+            this.pausedMenu1.btnMainMenu.Click += new RoutedEventHandler(btnMainMenu_Click);
+            pausedMenu1.IsHitTestVisible = false;
+            pausedMenu1.btnMainMenu.IsHitTestVisible = false;
+            pausedMenu1.Visibility = Visibility.Hidden;
+            this.pausedMenu1.lblMessage.IsHitTestVisible = false;
+           
+            //GENERAL SETTINGS
+            GeneralConf.TimeLeft = 120;
+            GeneralConf.LiveNumb = 3;
+            GeneralConf.NumbOfLevels = 5;
+            GeneralConf.GamePoints = 0;
+            this.gameHeader1.RefreshComponents();
+            
         }
 
     }

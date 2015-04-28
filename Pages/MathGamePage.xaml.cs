@@ -107,7 +107,7 @@ namespace Zentuz.Page
         
 
         #region buttons_clicks
-
+        /*
         private void btnRes1_Click(object sender, RoutedEventArgs e)
         {
             if (btnRes1.Content.Equals(_CorrectAns))
@@ -123,10 +123,12 @@ namespace Zentuz.Page
                 _TryNumb = 0;
                 if (this.LiveLosed != null)
                 this.LiveLosed(this,new EventArgs());
+                GeneralConf.WrongAnsSound.Play();
             }
             else 
             {
                 _TryNumb++;
+                GeneralConf.WrongAnsSound.Play();
             }
         }
 
@@ -141,6 +143,7 @@ namespace Zentuz.Page
             }
             else if (_TryNumb >= (_VALIDNUMBOFTRYS))
             {
+                GeneralConf.WrongAnsSound.Play();
                 _TryNumb = 0;
                 if (this.LiveLosed != null)
                 this.LiveLosed(this, new EventArgs());
@@ -148,6 +151,7 @@ namespace Zentuz.Page
             else
             {
                 _TryNumb++;
+                GeneralConf.WrongAnsSound.Play();
             }
 
         }
@@ -163,19 +167,22 @@ namespace Zentuz.Page
             }
             else if (_TryNumb >= (_VALIDNUMBOFTRYS))
             {
-
+                GeneralConf.WrongAnsSound.Play();
                 _TryNumb = 0;
                 if (this.LiveLosed!= null)
                 this.LiveLosed(this, new EventArgs());
+              
             }
             else
             {
                 _TryNumb++;
+                GeneralConf.WrongAnsSound.Play();
             }
         }
 
         private void btnRes2_Click(object sender, RoutedEventArgs e)
         {
+            
             if (btnRes2.Content.Equals(_CorrectAns))
             {
                 if (this.OnAnsweredCorrect != null)
@@ -185,18 +192,45 @@ namespace Zentuz.Page
             }
             else if (_TryNumb >= (_VALIDNUMBOFTRYS))
             {
+                GeneralConf.WrongAnsSound.Play();
                 _TryNumb = 0;
                 if (this.LiveLosed != null)
                 this.LiveLosed(this, new EventArgs());
+                
             }
             else
             {
                 _TryNumb++;
+                GeneralConf.WrongAnsSound.Play();
+            }
+        }*/
+        #endregion buttons_clicks   
+
+        private void btn_click(object sender, RoutedEventArgs e) 
+        {
+            Button button = (Button)e.Source;
+            if (button.Content.Equals(_CorrectAns))
+            {
+                GeneralConf.CorrectAnsSound.Play();
+                if (this.OnAnsweredCorrect != null)
+                    this.OnAnsweredCorrect(this, new EventArgs());
+                InitGame();
+
+            }
+            else if (_TryNumb >= (_VALIDNUMBOFTRYS))
+            {
+                GeneralConf.WrongAnsSound.Play();
+                _TryNumb = 0;
+                if (this.LiveLosed != null)
+                    this.LiveLosed(this, new EventArgs());
+
+            }
+            else
+            {
+                _TryNumb++;
+                GeneralConf.WrongAnsSound.Play();
             }
         }
-        #endregion buttons_clicks
-
-
 
   
     }

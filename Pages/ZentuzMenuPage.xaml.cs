@@ -165,7 +165,7 @@ namespace Zentuz.Page
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-
+            Pages.GamePage.ResetGame();
             ((MainWindow)Application.Current.MainWindow).ContentArea.Content = Pages.GamePage;
         }
 

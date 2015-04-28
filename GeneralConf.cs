@@ -38,6 +38,48 @@ namespace Zentuz
             get { return _NumbOfLevels; }
             set { _NumbOfLevels = value; }
         }
+
+        private static System.Media.SoundPlayer _WrongAnsSound;
+
+        public static System.Media.SoundPlayer WrongAnsSound
+        {
+            get 
+            { 
+                if (_WrongAnsSound == null)
+                {
+                    _WrongAnsSound = new System.Media.SoundPlayer(Resources.WrongAnsSound1);
+                }
+                return _WrongAnsSound;
+            }
+          
+        }
+
+        private static System.Media.SoundPlayer _CorrectAnsSound;
+
+        public static System.Media.SoundPlayer CorrectAnsSound
+        {
+            get
+            {
+                if (_CorrectAnsSound == null)
+                {
+                    _CorrectAnsSound = new System.Media.SoundPlayer(Resources.CorrectAnsSound);
+                }
+                return _CorrectAnsSound;
+            }
+         
+        }
+        
+        
+        
+
+     /*   private int myVar;
+
+        public int MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }*/
+        
         
         
         
