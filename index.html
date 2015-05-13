@@ -74,10 +74,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Zentuz Documentation</div>  </div>
+<div class="title">Zentuz Kinect Framework</div>  </div>
 </div><!--header-->
 <div class="contents">
-Zentuz Kinect Framework(ZKF) was developed to simplify the communication in both ways, for displaying the kinect output and for receiving input by using Windows Presentation Foundation. It was written in c# and the full source code can be found in https://github.com/saflogar/Zentuz/tree/master/Framework. Inside the framework folder we will find 7 classes:
+Zentuz Kinect Framework(ZKF) was developed to simplify the communication in both ways, for displaying the kinect output and for receiving input by using Windows Presentation Foundation. It was written in c# and the full source code can be found in<a href="https://github.com/saflogar/Zentuz/tree/master/Framework"> https://github.com/saflogar/Zentuz/tree/master/Framework</a>. Inside the framework folder we will find 7 classes:
 <ul>
   <li>CursorAdorner</li>
   <li>GesturePoint</li>
@@ -88,14 +88,23 @@ Zentuz Kinect Framework(ZKF) was developed to simplify the communication in both
   <li>KinectInput</li>
 </ul>
 <h2>
-How does it works?
+The KinectCursorManager
 </h2> 
 The core of the ZKF is the KinectCursorManager which coordinates all the hand tracking logic and raise the correct events according to each situation. The KinectCursorManager get the position of all the human bodies who are in front of the kinect, once it has detected all the bodies, it draw a circle in the hand of the user that is nearer to the kinect.
 
 <script src="https://gist.github.com/saflogar/c261d31970fad1efb4ee.js"></script>
 
-After getting the nearest body, the GetPrimaryHandMethod receive this skeleton and find the nearer hand of this body.
+After getting the nearest body, the GetPrimaryHand method receives this skeleton and find the nearer hand of this body.
 <script src="https://gist.github.com/saflogar/71c47d2017a9b29b6373.js"></script>   
+Since last release of ZKF, KinectCursorManager support multiple Gestures. The next is an example of how the ZKF translates the wave gesture:
+<script src="https://gist.github.com/saflogar/07d699b21f9548deb75b.js"></script>
+
+</br>
+The last piece of code show us how the wave gesture is tracked in the ZKF. First it finds out which hand is the main hand, which is the hand the player is using. If the user hand coordinates are in a higher position than the elbow the tracking state of the gesture changes to -InProgress-, so if the player's hand cross the elbow x position at least 4 times before the time defined in the timestap parameter end, it raise the GestureDetected event.
+</br>
+<img src="w.png" alt="image_wave">
+
+ 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
