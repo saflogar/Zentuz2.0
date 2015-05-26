@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -31,16 +30,40 @@ namespace Zentuz.Controls
         public event EventHandler OnLivesEnded;
         public event EventHandler OnLevelsEnded;
         
+        public class Cow
+        {
+            //TODO- CowAnimation
+            Canvas cnv;
+          
+            public Cow(Canvas cnv) 
+            {
+                this.cnv = cnv;
+                Image cowImg = new Image();
+                cowImg.Source =  new BitmapImage(new Uri("C:\\Users\\Sergio\\Documents\\Visual Studio 2010\\Projects\\Zentuz\\Images\\cow.med"));
+                cowImg.Width = 40;
+                cowImg.Height = 20;
+                cowImg.Stretch = Stretch.Fill;
+                cnv.Children.Add(cowImg);
+            }
+
+          
+
+
+        }
+
         public GameHeader()
         {
             InitializeComponent();
-            this.txtLives.Text = GeneralConf.LiveNumb.ToString();
+          
             this.txtScore.Text = GeneralConf.GamePoints.ToString();
             this._LevelsLeft = GeneralConf.NumbOfLevels;
             _Timer = new DispatcherTimer();
             _Timer.Tick += new EventHandler(_Timer_Tick);   
             _Timer.Interval = new TimeSpan(0, 0, 1);
             _Timer.Start();
+            heartStack.Orientation = Orientation.Horizontal;
+            refreshHearts();
+        //    Cow cowAnim = new Cow(this.cnvAnimation);
         }
 
         private void _Timer_Tick(object sender, EventArgs e)
@@ -61,10 +84,10 @@ namespace Zentuz.Controls
 
         public void RefreshComponents() 
         {
-            this.txtLives.Text = GeneralConf.LiveNumb.ToString();
             this.txtScore.Text = GeneralConf.GamePoints.ToString();
             this._LevelsLeft = GeneralConf.NumbOfLevels;
-            if (int.Parse(this.txtLives.Text) <= 0)
+            refreshHearts();
+            if (this.heartStack.Children.Count <= 0)
             {
                 this.OnLivesEnded(this , new EventArgs());
             }
@@ -74,6 +97,21 @@ namespace Zentuz.Controls
             }
 
         }
+
+        private void refreshHearts() 
+        {
+            heartStack.Children.Clear();
+            for (int i = 0; i < GeneralConf.LiveNumb; i++)
+            {
+                Image heartImage = new Image();
+                heartImage.Source = new BitmapImage(new Uri("C:\\Users\\Sergio\\Documents\\Visual Studio 2010\\Projects\\Zentuz\\Images\\heart.png"));
+                heartImage.Width = 60;
+                heartImage.Stretch = Stretch.Fill;
+                heartStack.Children.Add(heartImage);
+            }
+        }
+
+        
 
     }
 }

@@ -17,7 +17,7 @@ namespace Zentuz.Page
     /// <summary>
     /// Interaction logic for BaseGamePage.xaml
     /// </summary>
-    public abstract partial class BaseGamePage : UserControl
+    public partial class BaseGamePage : UserControl
     {
 
         //GAME EVENTS
@@ -31,7 +31,10 @@ namespace Zentuz.Page
             InitializeComponent();
         }
 
-        public void InitGame();
+        public virtual void InitGame() 
+        {
+        
+        }
 
 
     }

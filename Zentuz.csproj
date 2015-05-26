@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.Kinect, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,6 +63,7 @@
     <Compile Include="GeneralConf.cs" />
     <Compile Include="Gestures\WaveGesture.cs" />
     <Compile Include="Pages.cs" />
+    <Compile Include="Pages\BaseGamePage.cs" />
     <Compile Include="Pages\BaseGamePage.xaml.cs">
       <DependentUpon>BaseGamePage.xaml</DependentUpon>
     </Compile>
@@ -179,8 +181,11 @@
   <ItemGroup>
     <Resource Include="Images\hand.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\heart.png" />
     <Content Include="Sounds\CorrectAnsSound.wav" />
     <Content Include="Sounds\WrongAnsSound.mp3" />
     <None Include="Sounds\WrongAnsSound.wav" />

@@ -5,6 +5,8 @@ using Beginning.Kinect.Framework.Input;
 //using System.Windows.Threading;
 using System.Diagnostics;
 using Microsoft.Kinect;
+using System.Windows.Controls;
+
 
 namespace Beginning.Kinect.Framework
 {
@@ -349,7 +351,7 @@ namespace Beginning.Kinect.Framework
             //check for deviation
             if (Math.Abs(newPoint.Y - startPoint.Y) > _swipeDeviation)
             {
-                //Debug.WriteLine("Y out of bounds");
+                
                 if (SwipeOutOfBoundsDetected != null)
                     SwipeOutOfBoundsDetected(this, new KinectCursorEventArgs(point) { Z = z, Cursor = _cursorAdorner });
                 ResetGesturePoint(GesturePoints.Count);
@@ -390,11 +392,13 @@ namespace Beginning.Kinect.Framework
         {
 
             UIElement element = GetElementAtScreenPoint(point, _window);
-           
             if (element != null)
             {
-                Console.WriteLine();
-                Console.WriteLine(element + "" + element.GetHashCode());
+                //DEBUG
+                    /*
+                if(element is Button)
+                    Console.WriteLine(element + "" + element.GetHashCode());*/
+                //END DEBUG
                 element.RaiseEvent(new KinectCursorEventArgs(KinectInput.KinectCursorMoveEvent, point, z) { Cursor = _cursorAdorner });
                 if (element != _lastElementOver)
                 {
@@ -424,7 +428,7 @@ namespace Beginning.Kinect.Framework
             Point windowPoint = window.PointFromScreen(point);
 
             IInputElement element = window.InputHitTest(windowPoint);
-            
+          //  Console.WriteLine("[DEBUG-KCManager] "+ element.GetType());
             if (element is UIElement)
                 return (UIElement)element;
             else

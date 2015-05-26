@@ -6,12 +6,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="288" d:DesignWidth="910">
     <Grid Height="236">
-        <Label FontSize="100" Content="Score:" Height="121" HorizontalAlignment="Left" x:Name="lblScore" VerticalAlignment="Top" Width="288" Margin="12,94,0,0" />
-        <Label Content="Lives:" FontSize="100" Height="132" HorizontalAlignment="Left" Margin="9,0,0,0" Name="lblLives" VerticalAlignment="Top" Width="279" />
-        <Label Content="Time:" FontSize="100" Height="121" HorizontalAlignment="Left" Margin="438,0,0,0" Name="lblTime" VerticalAlignment="Top" Width="268" />
-        <TextBox FontSize="100" Height="106" Margin="290,118,478,0" Name="txtScore" VerticalAlignment="Top" />
-        <TextBox FontSize="100" Height="106" HorizontalAlignment="Left" Margin="688,15,0,0" Name="txTime" VerticalAlignment="Top" Width="170" />
-        <TextBox FontSize="100" Height="109" HorizontalAlignment="Left" Margin="290,12,0,0" Name="txtLives" VerticalAlignment="Top" Width="142" />
-        <Canvas Height="88" HorizontalAlignment="Left" Margin="462,136,0,0" Name="cnvAnimation" VerticalAlignment="Top" Width="396" />
+        <Label FontSize="55" Content="Score:" Height="79" HorizontalAlignment="Left" x:Name="lblScore" VerticalAlignment="Top" Width="238" Margin="550,-2,0,0" FontFamily="Snap ITC" Foreground="#FF834D4D" />
+        <Label Content="Time:" FontSize="55" Height="77" HorizontalAlignment="Right" Margin="0,83,174,0" Name="lblTime" VerticalAlignment="Top" Width="186" FontFamily="Snap ITC" Foreground="#FF834D4D" FontWeight="Normal" />
+        <TextBox FontSize="55" Height="76" Margin="782,12,12,0" Name="txtScore" VerticalAlignment="Top" BorderBrush="#00000000" FontFamily="Snap ITC" Foreground="#FF834D4D" />
+        <TextBox FontSize="55" Height="76" HorizontalAlignment="Left" Margin="722,95,0,0" Name="txTime" VerticalAlignment="Top" Width="154" BorderBrush="#00000000" FontFamily="Snap ITC" Foreground="#FF834D4D" />
+        <Canvas Height="104" HorizontalAlignment="Left" Margin="20,95,0,0" Name="cnvAnimation" VerticalAlignment="Top" Width="456" />
+        <StackPanel Height="65" HorizontalAlignment="Left" Margin="20,12,0,0" Name="heartStack" VerticalAlignment="Top" Width="200">
+        
+        </StackPanel>
     </Grid>
 </UserControl>
