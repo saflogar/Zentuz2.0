@@ -6,6 +6,9 @@ using Beginning.Kinect.Framework.Input;
 using System.Diagnostics;
 using Microsoft.Kinect;
 using System.Windows.Controls;
+using GestureLog;
+using System.Web.UI.DataVisualization.Charting;
+
 
 
 namespace Beginning.Kinect.Framework
@@ -29,7 +32,7 @@ namespace Beginning.Kinect.Framework
         private int _swipeTime;
         private bool _hasHandThreshold = true;
         private WaveDetection.WaveGesture _WaveGesture;
-
+        private XMLLoggerSingleton _XmlLogger;
         private double _xOutOfBoundsLength;
         private static double _initialSwipeX;
 
@@ -169,7 +172,7 @@ namespace Beginning.Kinect.Framework
                     this._kinectSensor = sensor;
                     this._WaveGesture = new WaveDetection.WaveGesture();
                     this._WaveGesture.GestureDetected += new EventHandler(_WaveGesture_GestureDetected);
-
+                    this._XmlLogger = XMLLoggerSingleton.Instance;
                     this._kinectSensor.SkeletonFrameReady += SkeletonFrameReady;
                     this._kinectSensor.SkeletonStream.Enable(new TransformSmoothParameters()
                     {
@@ -208,15 +211,19 @@ namespace Beginning.Kinect.Framework
         /// <param name="e">The <see cref="Microsoft.Kinect.SkeletonFrameReadyEventArgs"/> instance containing the event data.</param>
         private void SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
+
             using (SkeletonFrame frame = e.OpenSkeletonFrame())
             {
+                Dictionary<string, Point3D> logDict;
                 if (frame == null || frame.SkeletonArrayLength == 0)
                     return;
 
                 Skeleton[] skeletons = new Skeleton[frame.SkeletonArrayLength];
                 frame.CopySkeletonDataTo(skeletons);
                 Skeleton skeleton = GetPrimarySkeleton(skeletons);
+
                 this._WaveGesture.Update(skeletons, frame.Timestamp);
+                
                 if (skeleton == null)
                 {
                     SetHandTrackingDeactivated();
@@ -224,6 +231,8 @@ namespace Beginning.Kinect.Framework
                 }
                 else
                 {
+                    logDict = CreateLogDict(skeleton);
+                    _XmlLogger.WriteGestureLog(logDict,frame.Timestamp.ToString());
                     Joint? primaryHand = GetPrimaryHand(skeleton);
                     if (primaryHand.HasValue)
                     {
@@ -519,6 +528,16 @@ namespace Beginning.Kinect.Framework
             {
                 GesturePoints.RemoveAt(i);
             }
+        }
+
+        private Dictionary<string,Point3D> CreateLogDict(Skeleton skeleton) 
+        {
+            Dictionary<string,Point3D > jointDict = new Dictionary<string,Point3D>();
+            foreach (Joint item in skeleton.Joints)
+            {
+                jointDict.Add(item.JointType.ToString(), new Point3D(item.Position.X,item.Position.Y,item.Position.Z));
+            }
+            return jointDict;  
         }
     }
 }
