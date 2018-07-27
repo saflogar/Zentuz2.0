@@ -1,4 +1,4 @@
-# Zentuz2.0
+# Zentuz 2.0
 Educational kinect game
 
 Zentus project is a software that recognized the human body through a kinect making this part so funny. Then, the software start to playing the different educational games that the kid is going to answer shaking his body.
